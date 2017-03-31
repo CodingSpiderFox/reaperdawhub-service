@@ -5,7 +5,7 @@ Building:
 
 Prerequisites:
 
-Install a local MySQL database with a schema named reaperdawhub, user reaperdawhub and the same as passwort.
+Install a local MySQL database with a schema named reaperdawhub, user reaperdawhub and the same as password. (DDL privileges are needed if the JPA provider should automatically create the schema)
 
 Open in Netbeans or any other JAVA IDE capable of reading maven dependencies and creating projects from existing sources.
 
