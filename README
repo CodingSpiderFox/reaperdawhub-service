@@ -1,0 +1,11 @@
+# reaperdawhub-service
+Server side for ReaperDAWHub (metadata REST service)
+
+Building:
+
+Prerequisites:
+
+Install a local MySQL database with a schema named reaperdawhub, user reaperdawhub and the same as passwort.
+
+Open in Netbeans or any other JAVA IDE capable of reading maven dependencies and creating projects from existing sources.
+
