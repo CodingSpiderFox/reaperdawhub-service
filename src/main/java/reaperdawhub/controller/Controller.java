@@ -30,6 +30,14 @@ public class Controller {
     To Update a resource : HTTP PUT should be used
     To Delete a resource : HTTP DELETE should be used
     */
+ 
+    private boolean projectNotFound(Project project, long projectId) {
+        if (project == null) {
+            System.out.println("Project with id " + projectId + " not found");
+            return true;
+        }
+        return false;
+    }
     
     @RequestMapping("/projects")
     public ResponseEntity<List<Project>> getProjects() {
@@ -44,14 +52,10 @@ public class Controller {
     public ResponseEntity<Project> getProject(@PathVariable("projectId") long projectId, Model model) {
         System.out.println("Fetching project with id " + projectId);
         Project project = projectsService.findById(projectId);
-        if (project == null) {
-            System.out.println("Project with id " + projectId + " not found");
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        if (projectNotFound(project, projectId)) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(project, HttpStatus.OK);
     }
-    
-    
+
     @RequestMapping(value="/projects/{projectId}", method=RequestMethod.DELETE)
     public ResponseEntity<Project> deleteProject(@PathVariable("projectId") long projectId, Model model) {
         System.out.println("Fetching & Deleting project with id " + projectId);
@@ -70,10 +74,7 @@ public class Controller {
     public ResponseEntity<Project> updateUser(@PathVariable("projectId") long projectId, @RequestBody Project project) {
         Project currentProject = projectsService.findById(projectId);
          
-        if (currentProject == null) {
-            System.out.println("Project with id " + projectId + " not found");
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        if (projectNotFound(currentProject, projectId)) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
  
         currentProject.setName(project.getName());
         projectsService.updateProject(project);

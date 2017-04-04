@@ -32,27 +32,27 @@ public class Project implements Serializable {
 
   @NotNull
   @Temporal(TemporalType.TIMESTAMP)
-  private Date lastModified;
+  private Date timeStampLastModified;
 
-    public Date getLastModified() {
-        return lastModified;
+    public Date getTimeStampLastModified() {
+        return timeStampLastModified;
     }
 
-    public void setLastModified(Date lastModified) {
-        this.lastModified = lastModified;
+    public void setTimeLastModified(Date lastModified) {
+        this.timeStampLastModified = lastModified;
     }
 
-    public Date getCreated() {
-        return created;
+    public Date getTimeStampCreated() {
+        return timeStampCreated;
     }
 
-    public void setCreated(Date created) {
-        this.created = created;
+    public void setTimeStampCreated(Date created) {
+        this.timeStampCreated = created;
     }
   
   @NotNull
   @Temporal(value = TemporalType.TIMESTAMP)
-  private Date created;
+  private Date timeStampCreated;
   
   public long getOwnerId() {
     return ownerId;
